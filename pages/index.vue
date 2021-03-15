@@ -1,30 +1,6 @@
 <template>
   <div class="container">
-    <Form :countrylist="countryApi" />
-    <!-- <div>
-      <Logo />
-      <h1 class="title">
-        CRUD
-      </h1>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
-    </div> -->
+    <Form />
   </div>
 </template>
 
@@ -34,15 +10,15 @@ export default {
   name: "index",
   components: {
     Form
-  },
-  computed: {
-    countryApi() {
-      return this.$store.getters.getCountry;
-    }
-  },
-  fetch({ store }) {
-    return store.dispatch("getCountryApi");
   }
+  // computed: {
+  //   countryApi() {
+  //     return this.$store.getters.getCountry;
+  //   }
+  // },
+  // fetch({ store }) {
+  //   return store.dispatch("getCountryApi");
+  // }
 };
 </script>
 

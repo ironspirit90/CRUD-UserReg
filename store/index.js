@@ -1,39 +1,35 @@
 export const state = () => ({
     users: [],
-    countryStack: [],
-})
+    countries: [],
+    selectedUser: null,
+  })
+  
+  export const getters = {
+    getCountries: state => state.countries,
+    getUsers: state => state.users
+  }
+  
+  export const mutations = {
+    setCountries(state, data) {
+        state.countries = data
+    },
+    setUser(state, data){
+        state.users.push(data)
+    },
+    setSelectedUser(state, id){
 
-export const getters = {
-    getCountry: state => state.countryStack,
-    
-}
+        let filtered = state.users.filter(x => x.id === id)
 
-export const mutations = {
-    setCountry(state, data) {
-        state.countryStack = data
+        state.selectedUser = filtered[0]
+    },
+  }
+  
+  export const actions = {
+    async getCountriesFromAPI({ commit }) {
+      return this.$axios.$get(`https://restcountries.eu/rest/v2/all`)
+      .then(res =>{
+          commit('setCountries', res)
+      })
     }
-}
-
-export const actions = {
-    async getCountryApi({commit}) {
-        console.log("kur data blemba");
-
-        return this.$axios.$get(`https://restcountries.eu/rest/v2/all`)
-        .then(res =>{
-            commit('setCountry', res)
-            console.log("response from api");
-            console.log(res);
-        })
-        
-    }
-
-    // async getCountryApi({commit}) {
-
-    //     console.log("Where is data?!?");
-
-    //     let countryStack = await this.$axios.$get(`https://restcountries.eu/rest/v2/all`)
-    //     commit('setCountry', countryStack.data)
-    //     console.log(countryStacky);
-    // }
-}
+  }
 

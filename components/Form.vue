@@ -4,70 +4,83 @@
       <h1>Register User</h1>
     </div>
     <div>
+      <h6>First name</h6>
+      <input type="text" v-model="user.firstName" />
+      <h6>Sure Name</h6>
+      <input type="text" v-model="user.lastName" />
       <h6>Email</h6>
       <input type="email" v-model="user.email" />
-      <h6>Name</h6>
-      <input type="text" v-model="user.passwordOne" />
-      <h6>SureName</h6>
-      <input type="text" v-model="user.passworTwo" />
       <h6>Select Country</h6>
-      <CountryDropDown
-        :list="item"
-        v-for="(item, index) in countrylist"
-        :key="index"
-      />
-      <!-- <select name="Country" id="country">
-        <option value="">
-        
+      <select v-model="user.country">
+        <option
+          :value="country.name"
+          v-for="country in countries"
+          :key="country.name"
+        >
+          {{ country.name }}
         </option>
-      </select> -->
+      </select>
+      <h6>Address</h6>
+      <input type="text" v-model="user.address" />
     </div>
     <div>
-      <button>Register</button>
-      <button>User List</button>
+      <h4 v-if="err" class="err">Check if all the field are correct</h4>
+      <button @click="register">Register</button>
+
+      <nuxt-link to="/users">
+        <button>User List</button>
+      </nuxt-link>
     </div>
   </div>
 </template>
 
 <script>
-import CountryDropDown from "@/components/CountryDropDown";
 export default {
   name: "Form",
-  components: {
-    CountryDropDown
-  },
-  props: {
-    countrylist: Array
-  },
   data() {
     return {
       user: {
         email: "",
-        passwordOne: "",
-        passwordTwo: "",
-        country: ""
+        firstName: "",
+        lastName: "",
+        country: "",
+        address: ""
       },
       err: false
     };
+  },
+  computed: {
+    countries() {
+      return this.$store.state.countries;
+    }
+  },
+  mounted() {
+    this.$store.dispatch("getCountriesFromAPI");
   },
   methods: {
     register() {
       let mailRegex = /^\S+@\S+\.\S+$/;
       let isEmailLegit = mailRegex.test(this.user.email);
-      if (isEmailLegit && this.user.email.length > 0) {
+      if (
+        isEmailLegit &&
+        this.user.email.length > 0 &&
+        this.user.firstName.length > 0 &&
+        this.user.lastName.length > 0 &&
+        this.user.address.length > 0
+      ) {
+        this.$store.commit("setUser", this.user);
+        this.$router.push("/users");
       } else {
         this.err = true;
         console.log(this.err);
       }
     }
   }
-  //   computed: {
-  //     countryApi() {
-  //       return this.$store.getters.getCountry;
-  //     }
-  //   },
-  //   fetch({ store }) {
-  //     return store.dispatch("getCountryApi");
-  //   }
 };
 </script>
+
+<style scoped>
+.err {
+  color: red;
+}
+</style>
