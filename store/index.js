@@ -1,5 +1,23 @@
 export const state = () => ({
-    users: [],
+    users: [{
+      user: {
+        email: "bla",
+        firstName: "bla",
+        lastName: "bla",
+        country: "bla",
+        address: "bla"
+      }
+    },
+    {
+      user: {
+        email: "la",
+        firstName: "la",
+        lastName: "la",
+        country: "la",
+        address: "la"
+      }
+    },
+  ],
     countries: [],
     selectedUser: null,
   })
@@ -16,12 +34,12 @@ export const state = () => ({
     setUser(state, data){
         state.users.push(data)
     },
-    setSelectedUser(state, id){
+    // setSelectedUser(state, id){
 
-        let filtered = state.users.filter(x => x.id === id)
+    //     let filtered = state.users.filter(x => x.id === id)
 
-        state.selectedUser = filtered[0]
-    },
+    //     state.selectedUser = filtered[0]
+    // },
   }
   
   export const actions = {
