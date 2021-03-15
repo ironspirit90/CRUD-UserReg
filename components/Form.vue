@@ -51,7 +51,7 @@ export default {
   },
   computed: {
     countries() {
-      return this.$store.state.countries;
+      return this.$store.getters.getCountries;
     }
   },
   mounted() {
