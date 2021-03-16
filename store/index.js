@@ -1,22 +1,23 @@
 export const state = () => ({
-    users: [{
-      user: {
-        email: "bla",
-        firstName: "bla",
-        lastName: "bla",
-        country: "bla",
-        address: "bla"
-      }
-    },
-    {
-      user: {
-        email: "la",
-        firstName: "la",
-        lastName: "la",
-        country: "la",
-        address: "la"
-      }
-    },
+    users: [
+    //   {
+    //   user: {
+    //     email: "bla",
+    //     firstName: "bla",
+    //     lastName: "bla",
+    //     country: "bla",
+    //     address: "bla"
+    //   }
+    // },
+    // {
+    //   user: {
+    //     email: "la",
+    //     firstName: "la",
+    //     lastName: "la",
+    //     country: "la",
+    //     address: "la"
+    //   }
+    // },
   ],
     countries: [],
     selectedUser: null,
