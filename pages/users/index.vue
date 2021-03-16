@@ -1,14 +1,16 @@
 <template>
   <div>
+    <h1>User List</h1>
+    <nuxt-link to="/">
+      <button>back</button>
+    </nuxt-link>
     <User :user="item" v-for="(item, index) in users" :key="index" />
     <!-- <nuxt-link to="/">
       <button>back</button>
     </nuxt-link>
     <h1>User List</h1> -->
-    <nuxt-link to="/">
-      <button>back</button>
-    </nuxt-link>
-    <p>{{ users }}</p>
+
+    <!-- <p>{{ users }}</p> -->
   </div>
 </template>
 

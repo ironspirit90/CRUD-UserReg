@@ -1,9 +1,11 @@
 <template>
   <div>
-    <h1>User List</h1>
     <p>{{ user.email }}</p>
     <p>{{ user.firstName }}</p>
     <p>{{ user.lastName }}</p>
+    <p>{{ user.country }}</p>
+    <p>{{ user.address }}</p>
+    <button @click="delete">Delete User</button>
   </div>
 </template>
 
@@ -17,6 +19,11 @@ export default {
     // users() {
     //   return this.$store.state.users;
     // }
+  },
+  methods: {
+    delete() {
+      return;
+    }
   }
 };
 </script>
