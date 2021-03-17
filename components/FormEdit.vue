@@ -1,16 +1,43 @@
 <template>
-  <div>
+  <div class="form-group">
     <div>
       <h1>Edit user</h1>
       <h1>ID: {{ userProp.id }}</h1>
-      <h6>Current First name: {{ userProp.firstName }}</h6>
-      <input placeholder="new" type="text" v-model="user.firstName" />
-      <h6>Current Last Name: {{ userProp.lastName }}</h6>
-      <input placeholder="new" type="text" v-model="user.lastName" />
-      <h6>Current Email: {{ userProp.email }}</h6>
-      <input placeholder="new" type="email" v-model="user.email" />
-      <h6>Current Country: {{ userProp.country }}</h6>
-      <select v-model="user.country">
+    </div>
+    <div>
+      <label for="InputFirstName"
+        >Current First name: {{ userProp.firstName }}</label
+      >
+      <input
+        id="InputFirstName"
+        class="form-control"
+        placeholder="new"
+        type="text"
+        v-model="user.firstName"
+      />
+
+      <label for="InputLastName"
+        >Current Last Name: {{ userProp.lastName }}</label
+      >
+      <input
+        class="form-control"
+        id="InputLastEmail"
+        placeholder="new"
+        type="text"
+        v-model="user.lastName"
+      />
+
+      <label for="InputEmail">Current Email: {{ userProp.email }}</label>
+      <input
+        class="form-control"
+        id="InputEmail"
+        placeholder="new"
+        type="email"
+        v-model="user.email"
+      />
+
+      <label for="InputCountry">Current Country: {{ userProp.country }}</label>
+      <select v-model="user.country" class="form-control" id="InputCountry">
         <option
           :value="country.name"
           v-for="country in countries"
@@ -19,14 +46,25 @@
           {{ country.name }}
         </option>
       </select>
-      <h6>Current Address: {{ userProp.address }}</h6>
-      <input placeholder="new" type="text" v-model="user.address" />
+
+      <label for="InputAddress">Current Address: {{ userProp.address }}</label>
+      <input
+        class="form-control"
+        id="InputAddress"
+        placeholder="new"
+        type="text"
+        v-model="user.address"
+      />
     </div>
-    <div>
+    <div class="buttons">
       <h4 v-if="err" class="err">Check if all the field are correct</h4>
-      <button @click="editUser">Save</button>
+      <button @click="editUser" type="button" class="btn btn-primary btn-lg">
+        Save
+      </button>
       <nuxt-link to="/users">
-        <button>User List</button>
+        <button type="button" class="btn btn-secondary btn-lg">
+          User List
+        </button>
       </nuxt-link>
     </div>
   </div>
@@ -84,3 +122,18 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.err {
+  color: red;
+}
+
+.select-box {
+  width: 45%;
+  height: 30px;
+}
+.buttons {
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+</style>
