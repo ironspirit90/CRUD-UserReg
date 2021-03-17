@@ -4,7 +4,6 @@
       <h1>Register User</h1>
     </div>
     <div>
-      <!-- <h6>First name</h6> -->
       <label for="InputFirstName">First name</label>
       <input
         id="InputFirstName"
@@ -13,7 +12,7 @@
         type="text"
         v-model="user.firstName"
       />
-      <!-- <h6>Sure Name</h6> -->
+
       <label for="InputLastName">Last name</label>
       <input
         class="form-control"
@@ -21,7 +20,7 @@
         type="text"
         v-model="user.lastName"
       />
-      <!-- <h6>Email</h6> -->
+
       <label for="InputEmail">Email</label>
       <input
         class="form-control"
@@ -29,7 +28,7 @@
         type="email"
         v-model="user.email"
       />
-      <!-- <h6>Select Country</h6> -->
+
       <label for="InputCountry">Select country</label>
       <select v-model="user.country" class="form-control" id="InputCountry">
         <option
@@ -40,7 +39,6 @@
           {{ country.name }}
         </option>
       </select>
-      <!-- <h6>Address</h6> -->
       <label for="InputAddress">Address</label>
       <input
         class="form-control"
