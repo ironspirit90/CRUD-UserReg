@@ -1,8 +1,9 @@
 <template>
-  <div>
-    <FormEdit :userProp="selectedUser[0]" />
+  <div class="container">
+    <FormEdit :userProp="getUser" />
   </div>
 </template>
+
 <script>
 import FormEdit from "@/components/FormEdit";
 export default {
@@ -11,7 +12,7 @@ export default {
     FormEdit
   },
   computed: {
-    selectedUser() {
+    getUser() {
       return this.$store.getters.getEditUser;
     }
   }

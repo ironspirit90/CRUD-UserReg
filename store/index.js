@@ -1,8 +1,8 @@
 export const state = () => ({
     users: [],
     countries: [],
-    selectedUser: [],
-    
+    selectedUser: {},
+    avatarUrl: ""
   })
   
   export const getters = {
@@ -20,17 +20,18 @@ export const state = () => ({
         state.users.push(data)
     },
     deleteUser(state, id){
-  
         let filtered = state.users.filter(x => x.id !== id)
-        console.log(filtered);
         state.users = filtered
     },
     
     editUser(state, id){
-      let userSelected = state.users.filter(user => user.id === id)
-      console.log(userSelected);
+      let userSelected = state.users.find(user => user.id === id)
       state.selectedUser = userSelected
-      }
+    },
+
+    setAvatar(state, data){
+      state.avatarUrl = data
+    }
     
   }
   
@@ -40,6 +41,12 @@ export const state = () => ({
       .then(res =>{
           commit('setCountries', res)
       })
-    }
+    },
+    async getAvatarAPI({ commit }, data) {
+      return this.$axios.$get(`https://avatars.dicebear.com/api/human/${data.user.firstName}.svg`)
+      .then(res =>{
+        console.log(res);
+          commit('setAvatar', res)
+      })
+    },
   }
-
