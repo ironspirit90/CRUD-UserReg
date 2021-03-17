@@ -21,10 +21,10 @@ export default {
     users() {
       return this.$store.getters.getUsers;
     }
-  },
-  created() {
-    console.log(this.users);
   }
+  // created() {
+  //   console.log(this.users);
+  // }
 };
 </script>
 <style scoped>

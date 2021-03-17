@@ -76,9 +76,10 @@ export default {
         country: "",
         address: "",
         id: 0
+        // avatar: ""
       },
       err: false
-      // idCount: 0
+      // nameForAvatar: ""
     };
   },
   computed: {

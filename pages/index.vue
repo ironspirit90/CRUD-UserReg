@@ -11,6 +11,7 @@ export default {
   components: {
     Form
   }
+  // fetch({store}, )
 };
 </script>
 
