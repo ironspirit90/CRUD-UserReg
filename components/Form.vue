@@ -1,17 +1,37 @@
 <template>
-  <div>
+  <div class="form-group">
     <div>
       <h1>Register User</h1>
     </div>
     <div>
-      <h6>First name</h6>
-      <input type="text" v-model="user.firstName" />
-      <h6>Sure Name</h6>
-      <input type="text" v-model="user.lastName" />
-      <h6>Email</h6>
-      <input type="email" v-model="user.email" />
-      <h6>Select Country</h6>
-      <select v-model="user.country">
+      <!-- <h6>First name</h6> -->
+      <label for="InputFirstName">First name</label>
+      <input
+        id="InputFirstName"
+        class="form-control"
+        placeholder="Enter name"
+        type="text"
+        v-model="user.firstName"
+      />
+      <!-- <h6>Sure Name</h6> -->
+      <label for="InputLastName">Last name</label>
+      <input
+        class="form-control"
+        id="InputLastEmail"
+        type="text"
+        v-model="user.lastName"
+      />
+      <!-- <h6>Email</h6> -->
+      <label for="InputEmail">Email</label>
+      <input
+        class="form-control"
+        id="InputEmail"
+        type="email"
+        v-model="user.email"
+      />
+      <!-- <h6>Select Country</h6> -->
+      <label for="InputCountry">Select country</label>
+      <select v-model="user.country" class="form-control" id="InputCountry">
         <option
           :value="country.name"
           v-for="country in countries"
@@ -20,15 +40,25 @@
           {{ country.name }}
         </option>
       </select>
-      <h6>Address</h6>
-      <input type="text" v-model="user.address" />
+      <!-- <h6>Address</h6> -->
+      <label for="InputAddress">Address</label>
+      <input
+        class="form-control"
+        id="InputAddress"
+        type="text"
+        v-model="user.address"
+      />
     </div>
-    <div>
+    <div class="buttons">
       <h4 v-if="err" class="err">Check if all the field are correct</h4>
-      <button @click="register">Register</button>
+      <button @click="register" type="button" class="btn btn-primary btn-lg">
+        Register
+      </button>
 
       <nuxt-link to="/users">
-        <button>User List</button>
+        <button type="button" class="btn btn-secondary btn-lg">
+          User List
+        </button>
       </nuxt-link>
     </div>
   </div>
@@ -70,13 +100,8 @@ export default {
         this.user.lastName.length > 0 &&
         this.user.address.length > 0
       ) {
-        // this.user.id += 1;
         this.user.id = Math.random() * 1000;
-        // this.user.id = this.$store.getters.getUsers.length + 1;
         this.$store.commit("setUser", this.user);
-        // this.idCount++;
-        // this.user.id = this.idCount;
-
         this.$router.push("/users");
       } else {
         this.err = true;
@@ -90,5 +115,14 @@ export default {
 <style scoped>
 .err {
   color: red;
+}
+
+.select-box {
+  width: 45%;
+  height: 30px;
+}
+.buttons {
+  padding-top: 20px;
+  padding-bottom: 10px;
 }
 </style>
