@@ -4,13 +4,9 @@
     <nuxt-link to="/">
       <button>back</button>
     </nuxt-link>
-    <User :user="item" v-for="(item, index) in users" :key="index" />
-    <!-- <nuxt-link to="/">
-      <button>back</button>
-    </nuxt-link>
-    <h1>User List</h1> -->
-
-    <!-- <p>{{ users }}</p> -->
+    <div class="container">
+      <User :user="item" v-for="(item, index) in users" :key="index" />
+    </div>
   </div>
 </template>
 
@@ -31,3 +27,9 @@ export default {
   }
 };
 </script>
+<style scoped>
+.container {
+  display: flex;
+  flex-direction: row;
+}
+</style>

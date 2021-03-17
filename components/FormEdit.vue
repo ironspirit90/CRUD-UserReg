@@ -1,7 +1,6 @@
 <template>
   <div>
     <div>
-      <!-- <h3>{{ userProps.id }}</h3> -->
       <h1>Edit user</h1>
       <h1>ID: {{ selectedUser[0].id }}</h1>
       <h6>Current First name: {{ selectedUser[0].firstName }}</h6>
@@ -25,9 +24,6 @@
     </div>
     <div>
       <h4 v-if="err" class="err">Check if all the field are correct</h4>
-
-      <p>{{ userProp }}</p>
-
       <button @click="editUser">Save</button>
 
       <nuxt-link to="/users">

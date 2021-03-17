@@ -11,14 +11,6 @@ export default {
   components: {
     Form
   }
-  // computed: {
-  //   countryApi() {
-  //     return this.$store.getters.getCountry;
-  //   }
-  // },
-  // fetch({ store }) {
-  //   return store.dispatch("getCountryApi");
-  // }
 };
 </script>
 
