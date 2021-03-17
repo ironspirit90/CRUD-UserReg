@@ -1,16 +1,16 @@
 <template>
   <div>
     <div>
-      <h1>Register User</h1>
-    </div>
-    <div>
-      <h6>First name</h6>
-      <input type="text" v-model="user.firstName" />
-      <h6>Sure Name</h6>
-      <input type="text" v-model="user.lastName" />
-      <h6>Email</h6>
-      <input type="email" v-model="user.email" />
-      <h6>Select Country</h6>
+      <!-- <h3>{{ userProps.id }}</h3> -->
+      <h1>Edit user</h1>
+      <h1>ID: {{ selectedUser[0].id }}</h1>
+      <h6>Current First name: {{ selectedUser[0].firstName }}</h6>
+      <input placeholder="new" type="text" v-model="user.firstName" />
+      <h6>Current Last Name: {{ selectedUser[0].lastName }}</h6>
+      <input placeholder="new" type="text" v-model="user.lastName" />
+      <h6>Current Email: {{ selectedUser[0].email }}</h6>
+      <input placeholder="new" type="email" v-model="user.email" />
+      <h6>Current Country: {{ selectedUser[0].country }}</h6>
       <select v-model="user.country">
         <option
           :value="country.name"
@@ -20,12 +20,15 @@
           {{ country.name }}
         </option>
       </select>
-      <h6>Address</h6>
-      <input type="text" v-model="user.address" />
+      <h6>Current Address: {{ selectedUser[0].address }}</h6>
+      <input placeholder="new" type="text" v-model="user.address" />
     </div>
     <div>
       <h4 v-if="err" class="err">Check if all the field are correct</h4>
-      <button @click="register">Register</button>
+
+      <p>{{ userProp }}</p>
+
+      <button @click="editUser">Save</button>
 
       <nuxt-link to="/users">
         <button>User List</button>
@@ -37,6 +40,9 @@
 <script>
 export default {
   name: "Form",
+  props: {
+    userProp: Object
+  },
   data() {
     return {
       user: {
@@ -51,16 +57,20 @@ export default {
       // idCount: 0
     };
   },
-  computed: {
-    countries() {
-      return this.$store.getters.getCountries;
-    }
-  },
   mounted() {
     this.$store.dispatch("getCountriesFromAPI");
   },
+  computed: {
+    countries() {
+      return this.$store.getters.getCountries;
+    },
+    selectedUser() {
+      return this.$store.getters.getEditUser;
+    }
+  },
+
   methods: {
-    register() {
+    editUser() {
       let mailRegex = /^\S+@\S+\.\S+$/;
       let isEmailLegit = mailRegex.test(this.user.email);
       if (
@@ -70,13 +80,10 @@ export default {
         this.user.lastName.length > 0 &&
         this.user.address.length > 0
       ) {
-        // this.user.id += 1;
-        this.user.id = Math.random() * 1000;
-        // this.user.id = this.$store.getters.getUsers.length + 1;
+        this.user.id = this.selectedUser[0].id;
+        console.log(this.user.id);
+        this.$store.commit("deleteUser", this.user.id);
         this.$store.commit("setUser", this.user);
-        // this.idCount++;
-        // this.user.id = this.idCount;
-
         this.$router.push("/users");
       } else {
         this.err = true;
@@ -86,9 +93,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-.err {
-  color: red;
-}
-</style>

@@ -20,12 +20,15 @@ export const state = () => ({
     // },
   ],
     countries: [],
-    selectedUser: null,
+    selectedUser: [],
+    // uniqueUsers: 0,
   })
   
   export const getters = {
     getCountries: state => state.countries,
-    getUsers: state => state.users
+    getUsers: state => state.users,
+    getEditUser: state => state.selectedUser
+    // getUniqueUsers: state => state.uniqueUsers,
   }
   
   export const mutations = {
@@ -35,12 +38,28 @@ export const state = () => ({
     setUser(state, data){
         state.users.push(data)
     },
-    // setSelectedUser(state, id){
+    deleteUser(state, id){
+  
+        let filtered = state.users.filter(x => x.id !== id)
+        console.log(filtered);
+        state.users = filtered
+    },
+    // editUser(state, id, updatedUser){
+    //   let selected = state.users.filter(user => user.id === id)
+    //   updatedUser.id = selected.id;
 
-    //     let filtered = state.users.filter(x => x.id === id)
-
-    //     state.selectedUser = filtered[0]
+    //   state.users[id].email = updatedUser.email
+    //   state.users = [...state.users, ...updatedUser]
     // },
+    editUser(state, id){
+      let userSelected = state.users.filter(user => user.id === id)
+      console.log(userSelected);
+      state.selectedUser = userSelected
+      }
+    
+    // increaseUniqueUsers(state) {
+    //   state.uniqueUsers = state.uniqueUsers++; 
+    // }
   }
   
   export const actions = {
