@@ -95,7 +95,7 @@ export default {
   computed: {
     countries() {
       return this.$store.getters.getCountries;
-    }
+    },
   },
 
   methods: {

@@ -22,9 +22,6 @@ export default {
       return this.$store.getters.getUsers;
     }
   }
-  // created() {
-  //   console.log(this.users);
-  // }
 };
 </script>
 <style scoped>

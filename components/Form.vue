@@ -74,7 +74,7 @@ export default {
         country: "",
         address: "",
         id: 0,
-        avatar: ""
+        // avatar: ""
       },
       err: false
       // nameForAvatar: ""
@@ -111,7 +111,7 @@ export default {
 
         // console.log('userio avatar', this.user.avatar);
 
-        this.user.id = Math.random() * 1000;
+        this.user.id = Math.floor(Math.random() * 1000);
         this.$store.commit("setUser", this.user);
         this.$router.push("/users");
       } else {

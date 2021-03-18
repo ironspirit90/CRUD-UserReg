@@ -3,14 +3,14 @@ export const state = () => ({
     countries: [],
     selectedUser: {},
     // avatarName: "",
-    avatar: ""
+    // avatar: ""
   })
   
   export const getters = {
     getCountries: state => state.countries,
     getUsers: state => state.users,
     getEditUser: state => state.selectedUser,
-    getAvatar: state => state.avatar
+    // getAvatar: state => state.avatar
 
   }
   

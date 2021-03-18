@@ -16,7 +16,6 @@
       <li class="list-group-item">{{ user.country }}</li>
       <li class="list-group-item">{{ user.address }}</li>
     </ul>
-{{avatar}}
     <button
       type="button"
       class="btn btn-primary btn-lg btn-block"
@@ -54,9 +53,9 @@ export default {
     console.log("User Object/prop in User.vue", this.user);
   },
     computed: {
-    avatar() {
-      return this.$store.getters.getAvatar;
-    },
+    // avatar() {
+    //   return this.$store.getters.getAvatar;
+    // },
     generatedAvatarUrl() {
       return `https://avatar.oxro.io/avatar.svg?name=${this.user.firstName}`;
     }
