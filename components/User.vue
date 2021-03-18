@@ -7,6 +7,7 @@
       <p>{{ user.lastName }}</p>
       <p>{{ user.country }}</p>
       <p>{{ user.address }}</p> -->
+      <img class="card-img-top" :src="generatedAvatarUrl">
     </div>
     <ul class="list-group list-group-flush">
       <li class="list-group-item">{{ user.email }}</li>
@@ -15,7 +16,7 @@
       <li class="list-group-item">{{ user.country }}</li>
       <li class="list-group-item">{{ user.address }}</li>
     </ul>
-
+{{avatar}}
     <button
       type="button"
       class="btn btn-primary btn-lg btn-block"
@@ -48,7 +49,18 @@ export default {
       this.$store.commit("editUser", this.user.id);
       return this.$router.push(`/users/${this.user.firstName}/${this.user.id}`);
     }
-  }
+  },
+  mounted() {
+    console.log("User Object/prop in User.vue", this.user);
+  },
+    computed: {
+    avatar() {
+      return this.$store.getters.getAvatar;
+    },
+    generatedAvatarUrl() {
+      return `https://avatar.oxro.io/avatar.svg?name=${this.user.firstName}`;
+    }
+  },
 };
 </script>
 <style scoped>
