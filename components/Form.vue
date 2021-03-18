@@ -73,8 +73,8 @@ export default {
         lastName: "",
         country: "",
         address: "",
-        id: 0
-        // avatar: ""
+        id: 0,
+        avatar: ""
       },
       err: false
       // nameForAvatar: ""
@@ -99,6 +99,18 @@ export default {
         this.user.lastName.length > 0 &&
         this.user.address.length > 0
       ) {
+        // fetch({store, data}){
+        //   return store.dispach('getAvatarAPI')
+        // }
+        // this.$store.commit("setAvatarName", this.user.name);
+        // this.$store.dispatch("getAvatarAPI");
+
+        // console.log('uzdedama toki', this.$store.getters.getAvatar);
+
+        // this.user.avatar = this.$store.getters.getAvatar;
+
+        // console.log('userio avatar', this.user.avatar);
+
         this.user.id = Math.random() * 1000;
         this.$store.commit("setUser", this.user);
         this.$router.push("/users");

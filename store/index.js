@@ -2,13 +2,15 @@ export const state = () => ({
     users: [],
     countries: [],
     selectedUser: {},
-    avatarUrl: ""
+    // avatarName: "",
+    avatar: ""
   })
   
   export const getters = {
     getCountries: state => state.countries,
     getUsers: state => state.users,
-    getEditUser: state => state.selectedUser
+    getEditUser: state => state.selectedUser,
+    getAvatar: state => state.avatar
 
   }
   
@@ -29,9 +31,14 @@ export const state = () => ({
       state.selectedUser = userSelected
     },
 
-    setAvatar(state, data){
-      state.avatarUrl = data
-    }
+    // setAvatarName(state, data){
+    //   state.avatarName = data
+    // },
+
+    // setAvatar(state, data){
+    //   let number = Math.floor( Math.random() * 14 )
+    //   state.avatar = data[number].avatars[0].url
+    // }
     
   }
   
@@ -42,11 +49,18 @@ export const state = () => ({
           commit('setCountries', res)
       })
     },
-    async getAvatarAPI({ commit }, data) {
-      return this.$axios.$get(`https://avatars.dicebear.com/api/human/${data.user.firstName}.svg`)
-      .then(res =>{
-        console.log(res);
-          commit('setAvatar', res)
-      })
-    },
+    // async getAvatarAPI({ commit }) {
+    //   return this.$axios.$get(`https://avatars.dicebear.com/api/human/${state.avatarName}.svg`)
+    //   .then(res =>{
+    //     console.log('responseeeee', res);
+    //       commit('setAvatar', res)
+    //   })
+    // },
+    // async getAvatarAPI({ commit }) {
+    //   return this.$axios.$get(`https://tinyfac.es/api/users`)
+    //   .then(res =>{
+    //     console.log('responseeeee', res);
+    //       commit('setAvatar', res)
+    //   })
+    // },
   }
