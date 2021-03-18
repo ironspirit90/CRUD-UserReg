@@ -2,11 +2,6 @@
   <div class="card card-margin">
     <div class="card-body">
       <h5 class="card-title">User ID: {{ user.id }}</h5>
-      <!-- <p>{{ user.email }}</p>
-      <p>{{ user.firstName }}</p>
-      <p>{{ user.lastName }}</p>
-      <p>{{ user.country }}</p>
-      <p>{{ user.address }}</p> -->
       <img class="card-img-top" :src="generatedAvatarUrl">
     </div>
     <ul class="list-group list-group-flush">
@@ -41,16 +36,13 @@ export default {
   },
   methods: {
     deleteUser() {
-      console.log("delete");
+
       this.$store.commit("deleteUser", this.user.id);
     },
     editUser() {
       this.$store.commit("editUser", this.user.id);
       return this.$router.push(`/users/${this.user.firstName}/${this.user.id}`);
     }
-  },
-  mounted() {
-    console.log("User Object/prop in User.vue", this.user);
   },
     computed: {
     // avatar() {
